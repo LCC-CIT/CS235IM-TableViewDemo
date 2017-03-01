@@ -6,34 +6,107 @@ using System.Linq;
 
 namespace TableViewDemo
 {
+	public enum DwarfType { Disney, Tolkein, Marvel };
+
+	public class DwarfInfo
+	{
+		public string Name { get; set; }
+		public DwarfType Type { get; set; }
+	}
+
+
+
 	public class DwarfDataSource : UITableViewSource
 	{
-
-
-		string[] tableItems;
+		//      ---------- Fields -----------
 		const string CELL_IDENTIFIER = "dwarfcell"; // set in the Storyboard
-
-		Dictionary<string, List<string>> indexedTableItems;
 		string[] keys;
 
-		public DwarfDataSource (string[] items)
-		{
-			tableItems = items;
+		// Hard-coded dwarf data and supporting types
 
-			indexedTableItems = new Dictionary<string, List<string>>();
-			foreach (var t in items) {
-				if (indexedTableItems.ContainsKey (t[0].ToString ())) {
-					indexedTableItems[t[0].ToString ()].Add(t);
-				} else {
-					indexedTableItems.Add (t[0].ToString (), new List<string>() {t});
+		private Dictionary<string, List<DwarfInfo>> indexedTableItems = new Dictionary<string, List<DwarfInfo>>
+		{
+			{"B", new List<DwarfInfo>
+				{ new DwarfInfo{Name = "Balin", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Bashful", Type = DwarfType.Disney},
+				new DwarfInfo{Name = "Bifur", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Bofur", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Bombur", Type = DwarfType.Tolkein},
+				}
+			},
+			{"D", new List<DwarfInfo>
+				{ new DwarfInfo{Name = "Doc", Type = DwarfType.Disney},
+				new DwarfInfo{Name = "Dopey", Type = DwarfType.Disney},
+				new DwarfInfo{Name = "Dorin", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Dwalin", Type = DwarfType.Tolkein}
+				}
+			},
+			{"E", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Eitri", Type = DwarfType.Marvel}}
+			},
+			{"F", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Fili", Type = DwarfType.Tolkein}}
+			},
+			{"G", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Gloin", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Grumpy", Type = DwarfType.Disney}
+				}
+			},
+			{"H", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Happy", Type = DwarfType.Disney}}
+			},
+			{"K", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Kamorr", Type = DwarfType.Marvel},
+				new DwarfInfo{Name = "Kili", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Kindra", Type = DwarfType.Marvel}
+				}
+			},
+			{"O", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Ori", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Oin", Type = DwarfType.Tolkein}
+				}
+			},
+			{"S", new List<DwarfInfo>
+				{new DwarfInfo{Name = "Screwbeard", Type = DwarfType.Marvel},
+				new DwarfInfo{Name = "Sindri", Type = DwarfType.Marvel},
+				new DwarfInfo{Name = "Sleepy", Type = DwarfType.Disney},
+				new DwarfInfo{Name = "Sneezy", Type = DwarfType.Disney},
+				new DwarfInfo{Name = "Splitlip", Type = DwarfType.Marvel}
+				}
+			},
+			{"T", new List<DwarfInfo>
+				{
+				new DwarfInfo{Name = "Thorin", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Throgg", Type = DwarfType.Marvel},
+				new DwarfInfo{Name = "Tooth", Type = DwarfType.Marvel}
 				}
 			}
+		};
+
+
+		//   ---------- Constructor ---------- 
+		public DwarfDataSource ()
+		{
 			keys = indexedTableItems.Keys.ToArray ();
+		}
+
+
+		//          --------- Methods ----------
+		public DwarfInfo GetDwarfInfo(int section, int row)
+		{
+			return indexedTableItems[keys[section]][row];
+		}
+
+
+		//    ---------- base class overrides ----------
+		public override nint NumberOfSections(UITableView tableView)
+		{
+			return keys.Length;
 		}
 
 		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			return tableItems.Length;
+			return indexedTableItems[keys[section]].Count;
 		}
 
 		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
@@ -41,15 +114,8 @@ namespace TableViewDemo
 			// in a Storyboard, Dequeue will ALWAYS return a cell, 
 			var cell = tableView.DequeueReusableCell (CELL_IDENTIFIER);
 			// now set the properties as normal
-			cell.TextLabel.Text = tableItems[indexPath.Row];
 
-			const int NUM_DISNEY_DWARVES = 7;
-			if (cell.DetailTextLabel != null) {
-				if (indexPath.Row < NUM_DISNEY_DWARVES)
-					cell.DetailTextLabel.Text = "Disney dwarves";
-				else
-					cell.DetailTextLabel.Text = "Tolkein dwarves";
-			}
+			cell.TextLabel.Text = GetDwarfInfo(indexPath.Section, indexPath.Row).Name;
 
 			return cell;
 		}

@@ -12,7 +12,7 @@ using UIKit;
 namespace TableViewDemo
 {
 	[Register ("TableViewDemoController")]
-	partial class TableViewDemoController
+	partial class DwarfTableViewController
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]

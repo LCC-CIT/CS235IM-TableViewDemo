@@ -106,9 +106,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="TableViewDemoController.cs" />
-    <Compile Include="TableViewDemoController.designer.cs">
-      <DependentUpon>TableViewDemoController.cs</DependentUpon>
+    <Compile Include="DwarfTableViewController.cs" />
+    <Compile Include="DwarfTableViewController.designer.cs">
+      <DependentUpon>DwarfTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DwarfDataSource.cs" />
     <Compile Include="DetailViewController.cs" />
