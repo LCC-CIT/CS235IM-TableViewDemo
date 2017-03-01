@@ -6,6 +6,8 @@ using System.Linq;
 
 namespace TableViewDemo
 {
+	// *********************** DwarfInfo class ***********************
+
 	public enum DwarfType { Disney, Tolkein, Marvel };
 
 	public class DwarfInfo
@@ -15,6 +17,7 @@ namespace TableViewDemo
 	}
 
 
+	// *********************** DwarfDataSource class ***********************
 
 	public class DwarfDataSource : UITableViewSource
 	{
@@ -22,9 +25,12 @@ namespace TableViewDemo
 		const string CELL_IDENTIFIER = "dwarfcell"; // set in the Storyboard
 		string[] keys;
 
-		// Hard-coded dwarf data and supporting types
+		// I Hard-coded the dwarf data to show the structure of the data in the 
+		// dictionary. This is good as a teaching example, but not the 
+		// most elegant way to do this.
 
-		private Dictionary<string, List<DwarfInfo>> indexedTableItems = new Dictionary<string, List<DwarfInfo>>
+		private Dictionary<string, List<DwarfInfo>> indexedTableItems = 
+			new Dictionary<string, List<DwarfInfo>>
 		{
 			{"B", new List<DwarfInfo>
 				{ new DwarfInfo{Name = "Balin", Type = DwarfType.Tolkein},
