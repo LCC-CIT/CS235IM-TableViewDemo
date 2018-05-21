@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{71CF567D-BF02-41FA-91A4-329D79267623}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.ItemProperties.TableViewDemo PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.494D42C1-1F1F-4E72-A3C9-BCE82CFBC31A" HideGettingStarted="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TableViewDemo/DwarfDataSource.cs">
+    <Files>
+      <File FileName="TableViewDemo/DwarfDataSource.cs" Line="77" Column="71" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

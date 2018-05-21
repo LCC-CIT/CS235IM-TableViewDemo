@@ -67,6 +67,16 @@ namespace TableViewDemo
 				new DwarfInfo{Name = "Kindra", Type = DwarfType.Marvel}
 				}
 			},
+			{"L", new List<DwarfInfo>
+				{
+				new DwarfInfo{Name = "Loni", Type = DwarfType.Tolkein},
+				}
+			},
+			{"M",
+                    new List<DwarfInfo>
+                {new DwarfInfo{Name = "Mim", Type = DwarfType.Tolkein}
+                }
+			},
 			{"O", new List<DwarfInfo>
 				{new DwarfInfo{Name = "Ori", Type = DwarfType.Tolkein},
 				new DwarfInfo{Name = "Oin", Type = DwarfType.Tolkein}
@@ -83,6 +93,7 @@ namespace TableViewDemo
 			{"T", new List<DwarfInfo>
 				{
 				new DwarfInfo{Name = "Thorin", Type = DwarfType.Tolkein},
+				new DwarfInfo{Name = "Thrain", Type = DwarfType.Tolkein},
 				new DwarfInfo{Name = "Throgg", Type = DwarfType.Marvel},
 				new DwarfInfo{Name = "Tooth", Type = DwarfType.Marvel}
 				}
